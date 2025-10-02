@@ -1,0 +1,1 @@
+# strapi-phone-validator-5
