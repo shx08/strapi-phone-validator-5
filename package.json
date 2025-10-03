@@ -20,7 +20,9 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "strapi-plugin build",
@@ -28,7 +30,8 @@
     "watch:link": "strapi-plugin watch:link",
     "verify": "strapi-plugin verify",
     "test:ts:front": "run -T tsc -p admin/tsconfig.json",
-    "test:ts:back": "run -T tsc -p server/tsconfig.json"
+    "test:ts:back": "run -T tsc -p server/tsconfig.json",
+    "release": "semantic-release"
   },
   "dependencies": {
     "@strapi/design-system": "^2.0.0-rc.30",
@@ -38,6 +41,10 @@
     "react-intl": "^7.1.11"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.6",
+    "@semantic-release/npm": "^12.0.2",
     "@strapi/sdk-plugin": "^5.3.2",
     "@strapi/strapi": "^5.25.0",
     "@strapi/typescript-utils": "^5.25.0",
@@ -48,6 +55,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.1",
+    "semantic-release": "^24.2.9",
     "styled-components": "^6.1.19",
     "typescript": "^5.9.3"
   },
@@ -68,6 +76,10 @@
   "name": "strapi-phone-validator-5",
   "description": "Strapi Phone Validator is a powerful and easy-to-use plugin designed to validate phone numbers in various formats. With support for international phone numbers, it offers comprehensive validation to ensure the accuracy of user-provided phone data in your applications.",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/shx08/strapi-phone-validator-5.git"
@@ -76,5 +88,9 @@
     "url": "https://github.com/shx08/strapi-phone-validator-5/issues"
   },
   "homepage": "https://github.com/shx08/strapi-phone-validator-5#readme",
-  "author": "shx08 <hadjiu.sorin@gmail.com>"
+  "author": {
+    "name": "Hadjiu Sorin",
+    "email": "hadjiu.sorin@gmail.com",
+    "url": "https://github.com/shadjiu"
+  }
 }
