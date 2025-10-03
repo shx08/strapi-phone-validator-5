@@ -1,29 +1,23 @@
-name: Release
+name: Publish to npm
+
 on:
   push:
     branches: [main]
 
-permissions:
-  contents: write
-  packages: write
-
 jobs:
-  release:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: { fetch-depth: 0 }
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: 20
+          registry-url: https://registry.npmjs.org
 
-      - name: Install
-        run: npm ci
+      - run: npm ci
+      - run: npm run build && npm run verify
 
-      - name: Release
+      - run: npm publish --access public
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN:    ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
