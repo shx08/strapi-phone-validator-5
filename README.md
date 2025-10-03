@@ -1,15 +1,15 @@
 # Strapi-Phone-Validator
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shx08/strapi-phone-validator/main/pictures/logo.svg" alt="Strapi Phone Validator" width="300" height="300" />
+  <img src="https://raw.githubusercontent.com/shx08/strapi-phone-validator-5/main/pictures/logo.svg" alt="Strapi Phone Validator" width="300" height="300" />
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/strapi-phone-validator">
-    <img src="https://img.shields.io/npm/v/strapi-phone-validator.svg?color=blue&label=npm&logo=npm" alt="NPM Version" />
+  <a href="https://www.npmjs.com/package/strapi-phone-validator-5">
+    <img src="https://img.shields.io/npm/v/strapi-phone-validator-5.svg?color=blue&label=npm&logo=npm" alt="NPM Version" />
   </a>
-  <a href="https://github.com/shx08/strapi-phone-validator">
-    <img src="https://img.shields.io/github/stars/shx08/strapi-phone-validator?style=social" alt="GitHub Stars" />
+  <a href="https://github.com/shx08/strapi-phone-validator-5">
+    <img src="https://img.shields.io/github/stars/shx08/strapi-phone-validator-5?style=social" alt="GitHub Stars" />
   </a>
   <img src="https://img.shields.io/badge/Strapi-v5-blueviolet?logo=strapi&logoColor=white" alt="Strapi v5 Compatible" />
   <img src="https://img.shields.io/badge/UI-Seamless%20Design-blue?logo=react" alt="Seamless Strapi Design" />
@@ -31,19 +31,19 @@ It integrates the powerful [React International Phone](https://www.npmjs.com/pac
 
 ## 🔧 Installation
 
-You just need to install the `strapi-phone-validator` package via npm or yarn, at the root of your strapi project.
+You just need to install the `strapi-phone-validator-5` package via npm or yarn, at the root of your strapi project.
 
 **npm:**
 
 ```bash
-npm i strapi-phone-validator
+npm i strapi-phone-validator-5
 ```
 
 
 **yarn:**
 
 ```bash
-yarn add strapi-phone-validator
+yarn add strapi-phone-validator-5
 ```
 
 
@@ -51,50 +51,11 @@ yarn add strapi-phone-validator
 
 Create a custom field for a phone number on content type builder page.
 
-![Preview](https://github.com/shx08/strapi-phone-validator/blob/main/pictures/content-builder.gif?raw=true)
+![Preview](https://github.com/shx08/strapi-phone-validator-5/blob/main/pictures/content-builder.gif?raw=true)
 
 Now you can use Strapi Phone Validator as a custom field.
 
-![Preview](https://github.com/shx08/strapi-phone-validator/blob/main/pictures/content.gif?raw=true)
-
-
-
-You can also validate a phone number also on creating a new entity via API endpoint:
-
-```
-<code>
-import { factories, Strapi } from "@strapi/strapi";
-import { PhoneNumberUtil } from 'google-libphonenumber';
-
-const phoneUtil = PhoneNumberUtil.getInstance();
-
-const isPhoneValid = (phone: string) => {
-  try {
-    return phoneUtil.isValidNumber(phoneUtil.parseAndKeepRawInput(phone));
-  } catch (error) {
-    return false;
-  }
-};
-
-export default factories.createCoreController(
-  "api::.......",
-  ({ strapi }: { strapi: Strapi }) => ({
-    async create(ctx) {
-      const { data } = ctx.request.body;
-
-     const isValid = isPhoneValid(data.phone);
-
-
-     if(isValid) {
-        //...
-     }
-
-    ...
-    },
-  })
-);
-<code>
-```
+![Preview](https://github.com/shx08/strapi-phone-validator-5/blob/main/pictures/content.gif?raw=true)
 
 **To make Strapi Phone Validator work, you should take a look at the next section.**
 
