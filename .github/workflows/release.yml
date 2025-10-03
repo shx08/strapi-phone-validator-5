@@ -15,6 +15,22 @@ jobs:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
 
+      - name: Confirm GITHUB_TOKEN present
+        run: |
+          if [ -z "${{ secrets.GITHUB_TOKEN }}" ]; then
+            echo "::error ::GITHUB_TOKEN missing"
+            exit 1
+          fi
+          echo "GITHUB_TOKEN available"  
+
+      - name: Confirm NPM_TOKEN present
+        run: |
+          if [ -z "${{ secrets.NPM_TOKEN }}" ]; then
+            echo "::error ::NPM_TOKEN missing"
+            exit 1
+          fi
+          echo "NPM_TOKEN available"  
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
