@@ -87,7 +87,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/shx08/strapi-phone-validator-5.git"
+    "url": "https://github.com/shx08/strapi-phone-validator-5.git"
   },
   "bugs": {
     "url": "https://github.com/shx08/strapi-phone-validator-5/issues"

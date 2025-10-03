@@ -36,6 +36,9 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org
           always-auth: true
+        env:
+          # <-- THIS wires your NPM_TOKEN into the .npmrc that setup-node writes
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - run: npm ci
       # (optional) build/verify step here if you don't use @semantic-release/exec
