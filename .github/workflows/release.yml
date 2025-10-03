@@ -1,14 +1,19 @@
-name: Publish to npm
-
+name: Release
 on:
   push:
     branches: [main]
 
+permissions:
+  contents: write
+  packages: write
+  id-token: write   # <-- needed for npm provenance
+
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
 
       - uses: actions/setup-node@v4
         with:
@@ -16,8 +21,8 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - run: npm ci
-      - run: npm run build && npm run verify
-
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # (optional) build/verify step here if you don't use @semantic-release/exec
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN:    ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
