@@ -19,10 +19,11 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
+          always-auth: true
 
       - run: npm ci
       # (optional) build/verify step here if you don't use @semantic-release/exec
-      - env:
+      - run: npx semantic-release
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN:    ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+          NPM_TOKEN:    ${{ secrets.NPM_TOKEN }}  
